@@ -5,7 +5,7 @@ type Holiday =
     | "Christmas"
     | "Easter"
     | "Thanksgiving"
-    | "Fourth of July";
+    | "New Year's";
 
 export function CycleHoliday(): React.JSX.Element {
     let [holiday, setHoliday] = useState<Holiday>("Halloween");
@@ -14,30 +14,22 @@ export function CycleHoliday(): React.JSX.Element {
     emojiMap.set("Christmas", "🎄");
     emojiMap.set("Easter", "🐣");
     emojiMap.set("Thanksgiving", "🦃");
-    emojiMap.set("Fourth of July", "🧨");
+    emojiMap.set("New Year's", "🎉");
 
     function nextAlphabetically(): void {
-        holiday === "Christmas"
-            ? setHoliday("Easter")
-            : holiday === "Easter"
-              ? setHoliday("Fourth of July")
-              : holiday === "Fourth of July"
-                ? setHoliday("Halloween")
-                : holiday === "Halloween"
-                  ? setHoliday("Thanksgiving")
-                  : setHoliday("Christmas");
+        holiday === "Christmas" ? setHoliday("Easter")
+        : holiday === "Easter" ? setHoliday("Halloween")
+        : holiday === "Halloween" ? setHoliday("New Year's")
+        : holiday === "New Year's" ? setHoliday("Thanksgiving")
+        : setHoliday("Christmas");
     }
 
     function nextCalendar(): void {
-        holiday === "Easter"
-            ? setHoliday("Fourth of July")
-            : holiday === "Fourth of July"
-              ? setHoliday("Halloween")
-              : holiday === "Halloween"
-                ? setHoliday("Thanksgiving")
-                : holiday === "Thanksgiving"
-                  ? setHoliday("Christmas")
-                  : setHoliday("Easter");
+        holiday === "Easter" ? setHoliday("Halloween")
+        : holiday === "Halloween" ? setHoliday("Thanksgiving")
+        : holiday === "Thanksgiving" ? setHoliday("Christmas")
+        : holiday === "Christmas" ? setHoliday("New Year's")
+        : setHoliday("Easter");
     }
 
     return (
